@@ -110,5 +110,86 @@
 <div class="container">
     <img class="title" src="imgs/popcat.svg" alt="POPCAT">
     <div class="cat-img" id="p">0</div>
+</div>
+
+<script>
+    // 預加載替代的貓咪圖片
+    const preload = new Image();
+    preload.src = "imgs/op.png";
+
+
+    // 1.計數器初始化
+    let count = 0;
+    // 將計數器顯示到html元素，用id來抓取
+    let catImg = document.getElementById('p');
+    //顯示計數器
+    catImg.innerHTML = count;
+
+    //寫一個function 計數器累加
+    function addCount() {
+        count++;
+        catImg.innerHTML = count;
+    }
+
+
+    // 註冊滑鼠按下事件
+    document.addEventListener('mousedown', function () {
+        //計數器累加
+        addCount();
+        //註冊滑鼠按下的時候，更新計數器的顯示
+        catImg.textContent = count;
+        //切換張嘴圖片
+        catImg.id = 'op';
+    })
+
+    // 除滑鼠業能用鍵盤作互動
+    document.addEventListener('keydown', function () {
+        //計數器累加
+        addCount();
+        //註冊滑鼠按下的時候，更新計數器的顯示
+        catImg.textContent = count;
+        //切換張嘴圖片
+        catImg.id = 'op';
+    })
+
+    //放開遍恢復原來的圖片
+    document.addEventListener('mouseup', function () {
+        catImg.id = 'p';
+    })
+
+    // 鍵盤互動
+    document.addEventListener('keyup', function () {
+        catImg.id = 'p';
+    })
+
+    // 當滑鼠按下撥放pops/pop1.mp3
+    document.addEventListener('mousedown', function () {
+        let audio = new Audio('pops/pop1.mp3');
+        audio.play();
+    })
+
+//     鍵盤互動
+    document.addEventListener('keydown', function () {
+        let audio = new Audio('pops/pop1.mp3');
+        audio.play();
+    })
+
+    // 當滑鼠放開撥放pops/pop2.mp3
+    document.addEventListener('mouseup', function () {
+        let audio = new Audio('pops/pop2.mp3');
+        audio.play();
+    })
+
+    // 鍵盤互動
+    document.addEventListener('keyup', function () {
+        let audio = new Audio('pops/pop2.mp3');
+        audio.play();
+    })
+
+
+
+
+</script>
+
 </body>
 </html>
